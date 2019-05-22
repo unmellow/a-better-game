@@ -1,0 +1,8 @@
+[package]
+name = "i_will_try_to_make_a_game"
+version = "0.1.0"
+authors = ["unmellow <Amazingminecrafter2015@gmail.com>"]
+
+[dependencies]
+
+rand = "0.3.14"
