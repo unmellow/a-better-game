@@ -1,3 +1,6 @@
+extern crate rand;
+
+use self::rand::Rng;
 use std::io;
 
 mod game;
@@ -57,7 +60,32 @@ fn main() {
 
                             if difficulty > 1 {
                                 println!("\nGuess the number! \n");
-                                game::start_game(difficulty);
+                                let secret_number = rand::thread_rng().gen_range(1, difficulty + 1);
+                                let mut dyg = false;
+
+                                //starting game loop
+                                loop {
+                                    if dyg == true {
+                                        println!("Guess again!");
+                                    } else {
+                                        println!("guess a number between 1 and {}.", difficulty);
+                                        dyg = true;
+                                    }
+                                    let mut guess = String::new();
+                                    io::stdin()
+                                        .read_line(&mut guess)
+                                        .expect("Failed to read line WHAT DID YOU DO");
+
+                                    let guess: u16 = match guess.trim().parse() {
+                                        Ok(num) => num,
+                                        Err(_) => continue,
+                                    };
+
+                                    let breakloopnow = game::start_game(guess, secret_number);
+                                    if breakloopnow == true {
+                                        break;
+                                    }
+                                }
                                 played = true;
                                 break;
                             } else {
