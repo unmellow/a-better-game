@@ -29,9 +29,6 @@ pub fn start_game(difficulty: u16) {
             Err(_) => continue,
         };
 
-        //what did you guess?
-        //println!("You guessed: {}", guess);
-
         //did you guess the number?
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("{} is To Small...", guess),
