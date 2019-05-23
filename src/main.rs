@@ -14,17 +14,17 @@ fn main() {
     io::stdin()
         .read_line(&mut user)
         .expect("there's something wrong with what you typed");
-
+        //play loop
     loop {
         println!("\nHello {}my name is Julia   \nYou can say 'hi'   \nto leave say 'bye'   \nyou can give me a 'kiss'   \nonce you gave me your name,  \nwe can also 'play' a game    \n", user);
-
+        
         let mut cmd = String::new();
 
         io::stdin()
             .read_line(&mut cmd)
             .expect("there's something wrong with what you typed");
 
-        match cmd.trim().as_ref() {
+            match cmd.trim().as_ref() {
             "bye" => {
                 println!("\nbye");
                 break;
@@ -38,6 +38,7 @@ fn main() {
                     } else if played == true {
                         println!("\nwant to play again? \n");
                     }
+                    //seeing if you want to play the game before it starts
                     let mut wtpgg = String::new();
 
                     io::stdin()
@@ -71,16 +72,19 @@ fn main() {
                                         println!("guess a number between 1 and {}.", difficulty);
                                         dyg = true;
                                     }
+                                    //creating a string that contains user input
                                     let mut guess = String::new();
                                     io::stdin()
                                         .read_line(&mut guess)
                                         .expect("Failed to read line WHAT DID YOU DO");
 
-                                    let guess: u16 = match guess.trim().parse() {
+                                        //converting input string into a positive interger
+                                        let guess: u16 = match guess.trim().parse() {
                                         Ok(num) => num,
                                         Err(_) => continue,
                                     };
 
+                                    //checking if the awnser equals the secret number and breaking the loop afterwards
                                     let equal = game::cmp_guess(guess, secret_number);
                                     if equal == true {
                                         break;
