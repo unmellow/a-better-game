@@ -81,8 +81,8 @@ fn main() {
                                         Err(_) => continue,
                                     };
 
-                                    let breakloopnow = game::start_game(guess, secret_number);
-                                    if breakloopnow == true {
+                                    let equal = game::cmp_guess(guess, secret_number);
+                                    if equal == true {
                                         break;
                                     }
                                 }
